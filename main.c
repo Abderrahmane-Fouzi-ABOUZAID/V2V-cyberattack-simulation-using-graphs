@@ -10,18 +10,17 @@ int main(){
     initVehicules();
     Vehicule * patientZero = initPatientZero();
     allVehicules[0] = *patientZero;
-    initVehicule(&allVehicules[1]); 
-    initVehicule(&allVehicules[2]); 
-    initVehicule(&allVehicules[3]); 
-    initVehicule(&allVehicules[4]); 
-    initVehicule(&allVehicules[5]); 
-    initVehicule(&allVehicules[6]); 
-    initVehicule(&allVehicules[7]); 
+    for(int k=1; k<8; k++) initVehicule(&allVehicules[k]);
     initGraph();
 
     while(time != 120){ // we will consider that the process takes 2 minutes which means 120 secondes 
         runStep(1);
+        updateGraph();
         infectVehicules(time, &infectedNumber);
+        if(time % 5 == 0){
+            exportToGraphViz(time);
+        }
+
         time++;
     } 
 
