@@ -17,9 +17,8 @@ int main(){
         runStep(1);
         updateGraph();
         infectVehicules(time, &infectedNumber);
-        if(time % 5 == 0){
-            exportToGraphViz(time);
-        }
+
+        exportToGraphViz(time);
 
         time++;
     } 
